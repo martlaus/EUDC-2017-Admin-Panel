@@ -1,29 +1,21 @@
-$(function() { 
+$(function() {
 
   $('#submit-card').on('click', function(event) {
     event.preventDefault();
-    var worked = false;
-    console.log('hakkan ajaxit yritama');
-    
+
     $.ajax({
-      url: 'http://localhost:7070/rest/card',
-      type: 'POST',
-      data: { json: JSON.stringify({
-            title: "TERE",
-            description: 'HOMMIKUST"
-        })},
-        dataType: 'json',
-      async: false,
+      type: "POST",
+      url: "rest/card",
+      data: JSON.stringify({
+        "title": $("#card-title").val(),
+        "description": "default description"
+      }),
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
       success: function(data) {
-           worked = true;
+        found = true;
       }
-    });
-    
-    if (worked == true) {
-      alert("Saatmine õnnestus!");
-      return false;
-    }
-    
+    })
 
   });
 
