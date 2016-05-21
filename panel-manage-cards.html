@@ -63,17 +63,23 @@
     </div>
     <div class="col-xs-12 col-sm-9 main-container">
       <div class="col-xs-12 header">
-        <h1>Manage cards</h2>
+        <h1>Manage cards</h1>
       </div>
 
       <div class="col-xs-12 col-md-6 block">
+        <h2>Create a new card</h2>
         <form id="add-card" action="" method="post" role="form" style="display: block;">
           <div class="form-group">
+            <label for="card-title">Card title</label><br>
             <input type="text" class="title" id="card-title" placeholder="Enter title for the card" />
           </div>
           <div class="form-group">
-            <div class="col-xs-8 col-xs-offset-2">
-              <input type="submit" name="submit-card" id="submit-card" value="Add">
+            <label for="card-description">Card description</label><br>
+            <textarea rows="4" cols="50" maxlength="1000" form="add-card" id="card-description" placeholder="Enter a description for the card (max. 1000 letters)"></textarea>
+          </div>
+          <div class="form-group">
+            <div type="submit" name="submit-card" id="submit-card" class="col-xs-3 subject-button subject-add-work file-add-button">
+              <i class="ion-ios-plus-empty"></i> Create
             </div>
           </div>
         </form>
