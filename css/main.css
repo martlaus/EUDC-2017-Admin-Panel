@@ -634,5 +634,9 @@ li {
   .card .card-text {
     padding: 0;
     padding-top: 10px; }
-
+  
+  .create-card-notification {
+    height: 25px;
+    color: #FB1A51;
+  }
 /*# sourceMappingURL=main.css.map */
