@@ -88,7 +88,28 @@
       </div>
 
       <div class="col-xs-12 col-md-6 block">
-
+        <h2>Create a new timer card</h2>
+        <div class="create-timercard-notification">
+        </div>
+        <form id="add-timercard" action="" method="post" role="form" style="display: block;">
+          <div class="form-group">
+            <label for="timercard-title">Timercard Title</label><br>
+            <input type="text" class="timercard-title" id="timercard-title" placeholder="Enter a title for the card" />
+          </div>
+          <div class="form-group">
+            <label for="timercard-description">Timercard description</label><br>
+            <textarea rows="4" cols="50" maxlength="1000" form="add-timercard" class="timercard-description" id="timercard-description" placeholder="Enter a description for the card (max. 1000 letters)"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="timercard-enddate">Round Start Time</label><br>
+            <input id="round-start-time" type="datetime-local" />​
+          </div>
+          <div class="form-group">
+            <div type="submit" name="submit-timercard" id="submit-timercard" class="col-xs-3 subject-button subject-add-work file-add-button">
+              <i class="ion-ios-plus-empty"></i> Create
+            </div>
+          </div>
+        </form>
       </div>
 
     </div>
