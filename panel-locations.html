@@ -16,7 +16,7 @@
 
 </head>
 
-<body>
+<body class="locations-page">
   <div class="container-fluid">
     <div class="col-xs-12 col-sm-3 navcol">
       <nav class="navbar navbar-default" role="navigation">
@@ -37,8 +37,8 @@
             <li><a href="panel-home.html"><i class="ion-ios-home-outline nav-icon"></i>Home</a></li>
             <li><a href="panel-cards.html"><i class="ion-ios-list-outline nav-icon"></i>Cards</a></li>
             <li><a href="panel-timercards.html"><i class="ion-ios-timer-outline nav-icon"></i>Timercards</a></li>
-            <li class="active"><a href="#"><i class="ion-ios-color-wand-outline nav-icon"></i>Manage Cards</a></li>
-            <li><a href="panel-locations.html"><i class="ion-ios-location-outline nav-icon"></i>Locations</a></li>
+            <li><a href="#"><i class="ion-ios-color-wand-outline nav-icon"></i>Manage Cards</a></li>
+            <li class="active"><a href="panel-locations.html"><i class="ion-ios-location-outline nav-icon"></i>Locations</a></li>
             <br>
             <li class="logout-li"><a class="red-button" href="index.html">Log out</a></li>
             <!-- <li class="dropdown">
@@ -64,55 +64,27 @@
     </div>
     <div class="col-xs-12 col-sm-9 main-container">
       <div class="col-xs-12 header">
-        <h1>Manage cards</h1>
+        <h1>Locations</h1>
       </div>
 
       <div class="col-xs-12 col-md-6 block">
-        <h2>Create a new card</h2>
+        <h2>Add a new location</h2>
         <div class="create-card-notification">
         </div>
         <form id="add-card" action="" method="post" role="form" style="display: block;">
           <div class="form-group">
-            <label for="card-title">Card title</label><br>
-            <input type="text" class="title" id="card-title" placeholder="Enter a title for the card" />
+            <label for="card-title">Location name</label><br>
+            <input type="text" class="title col-xs-12" id="card-title" placeholder="Enter a name for the location" required />
           </div>
-          <div class="form-group">
-            <label for="card-description">Card description</label><br>
-            <textarea rows="4" cols="50" maxlength="1000" form="add-card" id="card-description" placeholder="Enter a description for the card (max. 1000 letters)"></textarea>
+          <div class="col-xs-12" id="map">
           </div>
           <div class="form-group">
             <div type="submit" name="submit-card" id="submit-card" class="col-xs-3 subject-button subject-add-work file-add-button">
-              <i class="ion-ios-plus-empty"></i> Create
+              <i class="ion-ios-plus-empty"></i> Add
             </div>
           </div>
         </form>
       </div>
-
-      <div class="col-xs-12 col-md-6 block">
-        <h2>Create a new timer card</h2>
-        <div class="create-timercard-notification">
-        </div>
-        <form id="add-timercard" action="" method="post" role="form" style="display: block;">
-          <div class="form-group">
-            <label for="timercard-title">Timercard Title</label><br>
-            <input type="text" class="timercard-title" id="timercard-title" placeholder="Enter a title for the card" />
-          </div>
-          <div class="form-group">
-            <label for="timercard-description">Timercard description</label><br>
-            <textarea rows="4" cols="50" maxlength="1000" form="add-timercard" class="timercard-description" id="timercard-description" placeholder="Enter a description for the card (max. 1000 letters)"></textarea>
-          </div>
-          <div class="form-group">
-            <label for="timercard-enddate">Round Start Time</label><br>
-            <input id="round-start-time" type="datetime-local" />​
-          </div>
-          <div class="form-group">
-            <div type="submit" name="submit-timercard" id="submit-timercard" class="col-xs-3 subject-button subject-add-work file-add-button">
-              <i class="ion-ios-plus-empty"></i> Create
-            </div>
-          </div>
-        </form>
-      </div>
-
     </div>
   </div>
   </div>
@@ -122,7 +94,9 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
   <script src="js/bootstrap.min.js"></script>
-  <script src="js/manage.js"></script>
+  <script src="js/locations.js"></script>
+  <!-- Google Maps -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgvvQ5opGvtrxCpnEG1d7gCov7RFHQXsw&callback=initMap" async defer></script>
 </body>
 
 </html>

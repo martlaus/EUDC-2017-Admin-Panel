@@ -174,7 +174,7 @@ h3 {
   form {
     padding-left: 35px;
     padding-right: 35px;
-    
+
   }
 }
 .panel-login>.panel-heading {
@@ -791,7 +791,7 @@ li {
     }
   }
   .card-header {
-    
+
     padding: 0;
     pointer: cursor;
     h3 {
@@ -806,6 +806,18 @@ li {
   .card-text {
     padding: 0;
     padding-top: 10px;
-    
+
+  }
+}
+
+/* Locations Page */
+
+.locations-page {
+  #map {
+    height: 300px;
+
+    .col-xs-12 & {
+      padding: 0;
+    }
   }
 }

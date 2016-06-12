@@ -634,14 +634,11 @@ li {
   .card .card-text {
     padding: 0;
     padding-top: 10px; }
-  
-  .create-card-notification {
-    height: 25px;
-    color: #FB1A51;
-  }
-  
-  .create-timercard-notification {
-    height: 25px;
-    color: #FB1A51;
-  }
+
+/* Locations Page */
+.locations-page #map {
+  height: 300px; }
+  .col-xs-12 .locations-page #map {
+    padding: 0; }
+
 /*# sourceMappingURL=main.css.map */
