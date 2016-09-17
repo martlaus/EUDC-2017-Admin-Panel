@@ -14,7 +14,7 @@ $(function() {
 
  
     $.ajax({
-      url: 'http://jokeoftheday.ml/rest/timercard',
+      url: API_URL + '/timercard',
       dataType: 'json',
       success: function(data) {
           

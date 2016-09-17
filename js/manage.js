@@ -16,7 +16,7 @@ $(function() {
 
     $.ajax({
       type: "POST",
-      url: "rest/card",
+      url: API_URL + '/card',
       data: JSON.stringify({
         "title": $("#card-title").val(),
         "description": $("#card-description").val()
@@ -52,7 +52,7 @@ $(function() {
     
     $.ajax({
       type: "POST",
-      url: "rest/timercard",
+      url: API_URL + '/timercard',
       data: JSON.stringify({
         "title" : $("#timercard-title").val(),
         "enddate": enddate,
@@ -66,7 +66,7 @@ $(function() {
         });
         return false;
       }
-    })
+    });
 
   });
 

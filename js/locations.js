@@ -7,7 +7,7 @@ var map,
 
 
 $.ajax({
-    url: 'http://localhost:7070/rest/location',
+    url: API_URL + '/location',
     dataType: 'json',
     success: function(data) {
 
@@ -36,7 +36,7 @@ $.ajax({
                 dataId = $(this).closest('tr').data('id');
 
             $.ajax({
-                url: 'http://localhost:7070/rest/location/' + dataId ,
+                url: API_URL + '/location/' + dataId ,
                 type: 'DELETE',
                 success: function(data) {
                   console.log("Tehtud!");
@@ -100,7 +100,7 @@ $('#submit-card').on('click', function(event) {
 
     $.ajax({
         type: "POST",
-        url: "http://localhost:7070/rest/location",
+        url: API_URL + '/location',
         data: JSON.stringify({
             "name": $('#card-title').val(),
             "lat": markerLocation.lat,

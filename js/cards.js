@@ -1,12 +1,10 @@
-$(function() { 
-
- 
+$(function() {
     $.ajax({
-      url: 'http://jokeoftheday.ml/rest/card',
+      url: API_URL + '/card',
       dataType: 'json',
       success: function(data) {
           var formattedDate, d, m, y, h, min, date;
-        $.each(data, function(key, value) {
+          $.each(data, function(key, value) {
             formattedDate = new Date(value.created);
             d = formattedDate.getDate();
             m = formattedDate.getMonth();
@@ -18,6 +16,4 @@ $(function() {
         });
       }
     });
-
-
 });
