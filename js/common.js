@@ -40,7 +40,11 @@ function makeCall(url, method, params, includeAuthentication, successCallback, e
             } else if (status == '401') {
                 window.location.href = '/';
             } else {
-                errorCallback(data, status);
+                if (errorCallback) {
+                    errorCallback(data, status);
+                } else {
+                    console.warn('We got a strange and overwhelming error.\nPls wait for monkeys in Apaches to be dispatched.');
+                }
             }
         },
         end: function () {
@@ -102,3 +106,13 @@ function getCookie(key) {
 function clearCookie(key) {
     setCookie(key, '');
 }
+
+$.urlParam = function(name){
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+    if (results==null){
+       return null;
+    }
+    else{
+       return results[1] || 0;
+    }
+};
