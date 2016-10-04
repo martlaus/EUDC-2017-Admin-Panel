@@ -1,5 +1,5 @@
-// var API_URL = 'http://188.166.104.203:7070/rest';
-var API_URL = 'http://localhost:7070/rest';
+var API_URL = document.location.origin + ':7070/rest'; //188.166.104.203:7070 voi localhost
+console.log(document.location.origin)
 var TOKEN_COOKIE_NAME = 'eudc-admin-token';
 var EMAIL_COOKIE_NAME = 'user-email';
 
@@ -76,10 +76,10 @@ function setAuth(token, email) {
     setCookie(EMAIL_COOKIE_NAME, email);
 }
 
-$.fn.serializeObject = function() {
+$.fn.serializeObject = function () {
     var o = {};
     var a = this.serializeArray();
-    $.each(a, function() {
+    $.each(a, function () {
         if (o[this.name] !== undefined) {
             if (!o[this.name].push) {
                 o[this.name] = [o[this.name]];
