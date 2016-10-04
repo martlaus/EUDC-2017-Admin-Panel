@@ -1,5 +1,5 @@
 var API_URL = document.location.origin.replace(":8875", "") + ':7070/rest'; //188.166.104.203:7070 voi localhost
-console.log(document.location.origin)
+console.log(document.location.origin);
 var TOKEN_COOKIE_NAME = 'eudc-admin-token';
 var EMAIL_COOKIE_NAME = 'user-email';
 
