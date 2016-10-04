@@ -11,8 +11,11 @@ $(function() {
             y = formattedDate.getFullYear();
             h = formattedDate.getHours();
             min = formattedDate.getMinutes();
+            var pinned = value.pinned ? '  (pinned)' : '';
+            var pinnedClass = value.pinned ? ' text-danger' : '';
+
             date = d + "." + m + "." + y + " " + h + ":" + min;
-            $('.cards').append('<div class="col-xs-12 col-md-6 card"><div class="col-xs-12 card-header"><h3>' + value.title + '</h3></div><div class="col-xs-12 card-date">' + date + '</div><div class="col-xs-12 card-text">' + value.description + '</div></div>');
+            $('.cards').append('<div class="col-xs-12 col-md-6 card"><div class="col-xs-12 card-header' + pinnedClass + '"><h3>' + value.title + pinned + '</h3></div><div class="col-xs-12 card-date">' + date + '</div><div class="col-xs-12 card-text">' + value.description + '</div></div>');
         });
       }
     });

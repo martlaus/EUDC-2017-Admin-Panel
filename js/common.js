@@ -1,4 +1,5 @@
-var API_URL = 'http://188.166.104.203:7070/rest';
+// var API_URL = 'http://188.166.104.203:7070/rest';
+var API_URL = 'http://localhost:7070/rest';
 var TOKEN_COOKIE_NAME = 'eudc-admin-token';
 var EMAIL_COOKIE_NAME = 'user-email';
 
@@ -50,7 +51,7 @@ function makeCall(url, method, params, includeAuthentication, successCallback, e
 
 function setAuthorization(headers) {
     if (userSettings.token && userSettings.user.email) {
-        var user = userSettings.email;
+        var user = userSettings.user;
         headers.Token = userSettings.token;
         headers.Email = user.email;
     }

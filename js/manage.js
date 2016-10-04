@@ -14,23 +14,17 @@ $(function() {
     }
 
 
-    $.ajax({
-      type: "POST",
-      url: API_URL + '/card',
-      data: JSON.stringify({
-        "title": $("#card-title").val(),
-        "description": $("#card-description").val()
-      }),
-      contentType: "application/json; charset=utf-8",
-      dataType: "json",
-      success: function(data) {
-        $('.create-card-notification').text("Card creation successful!");
-        $('#add-card').each(function() {
-          this.reset();
-        });
-        return false;
-      }
-    })
+    makeCall('/card', 'POST', JSON.stringify({
+      "title": $("#card-title").val(),
+      "description": $("#card-description").val(),
+      'pinned': $('#card-pinned').is(':checked')
+    }), true, function (data) {
+      $('.create-card-notification').text("Card creation successful!");
+      $('#add-card').each(function() {
+        this.reset();
+      });
+      return false;
+    });
 
   });
 
