@@ -35,10 +35,10 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav text-center">
                     <li><a href="panel-home.html"><i class="ion-ios-home-outline nav-icon"></i>Home</a></li>
-                    <li><a href="panel-users.html"><i class="ion-ios-people-outline nav-icon"></i>Users</a></li>
+                    <li class="active"><a href="panel-users.html"><i class="ion-ios-people-outline nav-icon"></i>Users</a></li>
                     <li><a href="panel-cards.html"><i class="ion-ios-list-outline nav-icon"></i>Cards</a></li>
                     <li><a href="panel-timercards.html"><i class="ion-ios-timer-outline nav-icon"></i>Timercards</a></li>
-                    <li class="active"><a href="#"><i class="ion-ios-color-wand-outline nav-icon"></i>Create Cards</a></li>
+                    <li><a href="#"><i class="ion-ios-color-wand-outline nav-icon"></i>Create Cards</a></li>
                     <li><a href="panel-locations.html"><i class="ion-ios-location-outline nav-icon"></i>Locations</a></li>
                     <br>
                     <li class="logout-li"><a class="red-button" href="index.html">Log out</a></li>
@@ -46,33 +46,28 @@
             </div>
         </nav>
     </div>
-    <div class="col-xs-12 col-sm-9 main-container">
+    <div class="col-md-9 main-container">
         <div class="col-xs-12 header">
-            <h1>Change card</h1>
+            <h1>Create or edit user</h1>
         </div>
 
         <div class="col-md-12 block">
-            <h2>Edit card data</h2>
-            <h4 class="create-card-notification text-danger">
+            <h2>Create or edit that gopnik</h2>
+            <h4 class="create-user-notification text-danger">
             </h4>
-            <form id="add-card" action="" method="post" role="form" style="display: block;">
+            <form id="add-user" action="" method="post" role="form" style="display: block;">
                 <div class="form-group">
-                    <label for="card-title">Card title</label><br>
-                    <input size="120" type="text" class="title" id="card-title" placeholder="Enter a title for the card" />
+                    <label for="user-email">User email</label><br>
+                    <input size="60" type="email" class="user-email" id="user-email" placeholder="Enter user email" />
                 </div>
 
                 <div class="form-group">
-                    <label for="card-description">Card description</label><br>
-                    <textarea rows="4" cols="120" maxlength="1000" form="add-card" id="card-description" placeholder="Enter a description for the card (max. 1000 letters)"></textarea>
+                    <label for="user-pw">User password</label><br>
+                    <input size="60" type="password" class="user-pw" id="user-pw" placeholder="Enter user password" />
                 </div>
 
                 <div class="form-group">
-                    <input form="add-card" id="card-pinned" type="checkbox"></input>
-                    <label class="checkbox-inline" for="card-pinned">Pinned?</label>
-                </div>
-
-                <div class="form-group">
-                    <div type="submit" name="submit-card" id="submit-card" class="col-xs-3 subject-button subject-add-work file-add-button">
+                    <div type="submit" name="submit-user" id="submit-user" class="col-xs-3 subject-button subject-add-work file-add-button">
                         <i class="ion-ios-plus-empty"></i> Save
                     </div>
                 </div>
@@ -88,7 +83,7 @@
 <script src="js/jquery-1.11.3.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="js/bootstrap.min.js"></script>
-<script src="js/edit-card.js"></script>
+<script src="js/edit-user.js"></script>
 <script src="js/common.js"></script>
 </body>
 
