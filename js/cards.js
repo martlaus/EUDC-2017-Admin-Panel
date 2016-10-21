@@ -30,7 +30,7 @@ function callCards() {
             $('.cards').append('<div class="col-xs-12 col-md-6 card"><div class="col-xs-12 card-header'
                 + pinnedClass + '"><a href="' + datEditLink + '"><h3>' + value.title + pinned +
                 '</h3></a></div><div class="col-xs-12 card-date">' + date +
-                '</div><div class="col-xs-12 card-text">' + value.description + '</div><button  onclick="deleteCardAsAdmin()" class="card" id="deleteCard"  data-card-id="' + cardId + '">butan</button></div>');
+                '</div><div class="col-xs-12 card-text">' + value.description + '</div><button  onclick="deleteCardAsAdmin()" class="col-xs-3 btn btn-delete" id="deleteCard"  data-card-id="' + cardId + '">Delete</button></div>');
         });
     });
 }

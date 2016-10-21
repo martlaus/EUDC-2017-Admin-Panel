@@ -501,6 +501,19 @@ li {
   pointer-events: none;
   background-color: #e6e6e6 !important; }
 
+.btn-delete {
+  background-color: #c9302c;
+  margin-top: 3px;
+  color: white;
+  font-size: 14px;
+  height: auto;
+  font-weight: normal;
+  padding: 5px;
+  align: bottom left; }
+  .btn-delete:focus, .btn-delete:hover {
+    color: white;
+    background-color: firebrick; }
+
 .alert-error {
   color: #FB1A51;
   height: 21px; }
@@ -665,5 +678,3 @@ li {
     background-color: #FB1A51; }
   .locations-page .table--locations__button--view {
     background-color: #0073f7; }
-
-/*# sourceMappingURL=main.css.map */
