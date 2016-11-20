@@ -928,3 +928,13 @@ li {
     }
   }
 }
+
+// add your own style on td:hover
+.table-cell-hover>tbody>tr>td:hover, .table-cell-hover>tbody>tr>td:hover{
+    background-color: #f5f5f5!important; // Or any colour you like
+}
+
+// reset the default bootstrap style on tr:hover
+.table-cell-hover>tbody>tr:hover>td, .table-cell-hover>tbody>tr:hover>th{
+    background-color: inherit;
+}
