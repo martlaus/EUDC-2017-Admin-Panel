@@ -938,3 +938,20 @@ li {
 .table-cell-hover>tbody>tr:hover>td, .table-cell-hover>tbody>tr:hover>th{
     background-color: inherit;
 }
+
+.add-user {
+    font-size: 35px;
+    color: magenta;
+    margin-top: 10px;
+    margin-right: 17px;
+}
+
+.add-user-link {
+    display: flex;
+}
+
+#delete-event {
+    margin: 0;
+    height: 30px;
+    border-radius: 0;
+}

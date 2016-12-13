@@ -46,6 +46,13 @@ $(function() {
 
     makeCall('/event', 'POST', JSON.stringify(postData), true, function (data) {
       $('.create-event-notification').text("Event editing successful!");
+      console.log(data);
+      if (history.pushState) {
+          var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?id=' + data.id;
+          window.history.pushState({path: newurl}, '' , newurl);
+
+          onLoadCallback();
+      }
 
       return false;
     }, function() {
@@ -56,6 +63,10 @@ $(function() {
 });
 
 $(document).ready(function () {
+  onLoadCallback();
+});
+
+function onLoadCallback() {
   var eventId = $.urlParam('id');
   if (eventId) {
     makeCall('/event/', 'GET', {}, false, function (data) {
@@ -65,6 +76,7 @@ $(document).ready(function () {
           $('#event-description').val(data[id].description);
           $('#event-start').val(formatDate(new Date(data[id].startTime)));
           $('#event-end').val(formatDate(new Date(data[id].endTime)));
+          $('#delete-event').removeClass('hide');
           break;
         }
       }
@@ -74,7 +86,8 @@ $(document).ready(function () {
       $('#event-start').val(`08.${$.urlParam('date')}.2017 ${$.urlParam('time')}:00`);
     }
   }
-});
+  addDeleteListener();
+}
 
 function formatDate(dateObj) {
   var s = '';
@@ -87,4 +100,15 @@ function formatDate(dateObj) {
   s += ':' + mins;
 
   return s
+}
+
+
+function addDeleteListener() {
+  $('#delete-event').off().click(function (e) {
+    e.preventDefault();
+    var eventId = $.urlParam('id');
+    makeCall('/event/' + eventId, 'DELETE', {}, true, function () {
+      window.location.href = '/panel-schedule.html';
+    });
+  });
 }
