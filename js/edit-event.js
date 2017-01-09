@@ -1,3 +1,17 @@
+$(document).ready(function() {
+     $.ajax({
+      type: "GET",
+      url: API_URL + '/location',
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+      success: function(obj) {
+        $.each(obj, function(key, value) {
+            $("#event-location").append("<option>" + value.name + "</option>");
+        });
+      }
+    });
+});
+
 $(function() {
 
   $.datetimepicker.setLocale('en');
@@ -16,9 +30,11 @@ $(function() {
 
 
   $('#submit-event').on('click', function(event) {
+    
     event.preventDefault();
     var $eventEnd = $('#event-end');
-    var $eventStart = $('#event-start')
+    var $eventStart = $('#event-start');
+    var $eventLocation = $('#event-location');
 
     if (new Date($eventEnd.val()) - new Date($eventStart.val()) < 0) {
       $('.create-event-notification').text("Event end time can't be before it starts!");
