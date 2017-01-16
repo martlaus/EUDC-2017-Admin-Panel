@@ -120,10 +120,10 @@ function formatDate(dateObj) {
 
 
 function addDeleteListener() {
-  $('#delete-event').off().click(function (e) {
+  $('#delete-event').click(function (e) {
     e.preventDefault();
     var eventId = $.urlParam('id');
-    makeCall('/event/' + eventId, 'DELETE', {}, true, function () {
+    makeCall('/event', 'DELETE', JSON.stringify({"id": eventId}), true, function () {
       window.location.href = '/panel-schedule.html';
     });
   });
