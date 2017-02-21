@@ -5,7 +5,7 @@ $(function () {
 });
 
 function addEvent(day, time) {
-    window.location.href = `/edit-event.html?time=${time}&date=${day}`;
+    window.location.href = '/edit-event.html?time=' + time + '&date=' + day;
 }
 
 function listenAddEvent(day, time) {
@@ -31,7 +31,7 @@ function callSchedule() {
             var hourEvents = [];
             for (var e in data) {
                 if (new Date(data[e].startTime).getDate() === new Date(data[e].endTime).getDate()) {
-                    if (new Date(data[e].startTime).getHours() <= i && new Date(data[e].endTime).getHours() > i) {
+                    if (new Date(data[e].startTime).getHours() <= i && new Date(data[e].endTime).getHours() >= i) {
                         hourEvents.push(data[e]);
                     }
                 } else {
@@ -46,13 +46,17 @@ function callSchedule() {
 
             var index = document.createElement('td');
             var hour = String(i).length > 1 ? String(i) : '0' + String(i);
-            index.appendChild(document.createTextNode(`${hour}:00`));
+            index.appendChild(document.createTextNode(hour + ':00'));
             day.appendChild(index);
+
+            hourEvents.sort(function (a, b) {
+                return new Date(a.startTime) - new Date(b.startTime);
+            });
 
             for (var j = 0; j < 7; j++) {
                 var td = document.createElement('td');
                 td.className = 'text-center';
-                $(td).attr('onclick', `listenAddEvent(${j + 14}, ${i})`);
+                $(td).attr('onclick', 'listenAddEvent(' + (j + 14) + ', ' + i + ')');
 
                 for (var e in hourEvents) {
                     var rollover = hourEvents[e].rollover;
@@ -67,8 +71,9 @@ function callSchedule() {
                         if ($(td).children().length) {
                             td.appendChild(document.createElement('hr'));
                         }
-                        var _event = document.createElement('a')
-                        _event.href = `/edit-event.html?id=${hourEvents[e].id}`;
+                        var _event = document.createElement('a');
+                        _event.title = hourEvents[e].description;
+                        _event.href = '/edit-event.html?id=' + hourEvents[e].id;
                         _event.appendChild(document.createTextNode(hourEvents[e].title));
                         td.appendChild(_event);
                     }
