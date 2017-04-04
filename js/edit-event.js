@@ -93,6 +93,7 @@ function onLoadCallback() {
                 if (data[id].id == eventId) {
                     $('#event-title').val(data[id].title);
                     $('#event-description').val(data[id].description);
+                    $('#event-location').val(data[id].location);
                     $('#event-start').val(formatDate(new Date(data[id].startTime)));
                     $('#event-icon').val(data[id].eventType);
                     $('#event-color').val(data[id].color);
@@ -104,7 +105,7 @@ function onLoadCallback() {
         });
     } else {
         if ($.urlParam('date') || $.urlParam('time')) {
-            $('#event-start').val(`08.${$.urlParam('date')}.2017 ${$.urlParam('time')}:00`);
+            $('#event-start').val('08.' + $.urlParam('date') + '.2017' + $.urlParam('time') + ':00');
         }
     }
     addDeleteListener();

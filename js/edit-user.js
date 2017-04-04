@@ -10,7 +10,8 @@ $(function() {
     }
 
     var postData = {
-      "email": $("#user-email").val()
+      "email": $("#user-email").val(),
+      "role": $("#user-role").val()
     };
 
     var pwFieldVal = $("#user-pw").val();
@@ -20,11 +21,14 @@ $(function() {
       postData.password = pwFieldVal;
     }
 
+    var idUrl = '';
+
     if (id) {
       postData.id = id;
+      idUrl = '/' + id;
     }
 
-    makeCall('/user', 'POST', JSON.stringify(postData), true, function (data) {
+    makeCall('/user' + idUrl, 'POST', JSON.stringify(postData), true, function (data) {
       $('.create-user-notification').text("User editing successful!");
 
       return false;
@@ -41,6 +45,7 @@ $(document).ready(function () {
     for (var id in data) {
       if (data[id].id == userId) {
         $('#user-email').val(data[id].email);
+        $('#user-role').val(data[id].role);
         break;
       }
     }
