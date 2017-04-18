@@ -95,6 +95,43 @@
         </table>
       </div>
     </div>
+
+    <div class="col-xs-12 col-sm-9 main-container">
+      <div class="col-xs-12 header">
+        <h1>Round locations</h1>
+      </div>
+
+      <div class="col-xs-12 col-md-6 block">
+        <h2>Add a new round location</h2>
+        <div class="create-card-notification">
+        </div>
+        <form id="add-round-location" action="" method="post" role="form" style="display: block;">
+          <div class="form-group">
+            <label for="round-location-title">Round location name</label><br>
+            <input type="text" class="title col-xs-12" id="round-location-title" placeholder="Enter a name for the location" required />
+          </div>
+          <div class="form-group">
+          <label for="round-location-imgurl">Round location image URL</label><br>
+            <input type="text" class="title col-xs-12" id="round-location-imgurl" placeholder="Enter an image URL for the location" required />
+          </div>
+          <div class="form-group">
+            <div type="submit" name="submit-round-location" id="submit-round-location" class="col-xs-12 subject-button subject-add-work file-add-button">
+              <i class="ion-ios-plus-empty"></i> Add
+            </div>
+          </div>
+        </form>
+
+
+      </div>
+      <div class="col-xs-12 col-md-6 block">
+        <h2>All Round locations</h2>
+        <table class="table table--rlocations">
+          <tbody class="table--rlocations__body">
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
   </div>
   </div>
 
