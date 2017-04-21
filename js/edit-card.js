@@ -18,6 +18,7 @@ $(function() {
       "title": $("#card-title").val(),
       "description": $("#card-description").val(),
       'pinned': $('#card-pinned').is(':checked'),
+      'sendPushAll': $('#card-send-push-all').is(':checked'),
       'id': $.urlParam('cardid')
     }), true, function (data) {
       $('.create-card-notification').text("Card editing successful!");
@@ -73,6 +74,7 @@ $(document).ready(function () {
         $('#card-title').val(data[id].title);
         $('#card-description').val(data[id].description);
         $('#card-pinned').prop('checked', data[id].pinned);
+        $('#card-send-push-all').prop('checked', data[id].sendPushAll);
         break;
       }
     }
