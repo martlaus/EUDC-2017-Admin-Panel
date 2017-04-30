@@ -79,4 +79,5 @@ $(document).ready(function () {
       }
     }
   });
+callCards();
 });
