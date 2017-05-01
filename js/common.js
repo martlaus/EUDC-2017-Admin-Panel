@@ -1,5 +1,5 @@
-var API_URL = 'http://188.166.104.203:7070/rest'; //document.location.origin.replace(":8875", "") + ':7070/rest'; //188.166.104.203:7070 voi localhost
-//var API_URL = 'http://localhost:7070/rest';
+//var API_URL = 'http://188.166.104.203:7070/rest'; //document.location.origin.replace(":8875", "") + ':7070/rest'; //188.166.104.203:7070 voi localhost
+var API_URL = 'http://localhost:7070/rest';
 console.log(document.location.origin);
 var TOKEN_COOKIE_NAME = 'eudc-admin-token';
 var EMAIL_COOKIE_NAME = 'user-email';
@@ -108,12 +108,16 @@ function clearCookie(key) {
     setCookie(key, '');
 }
 
-$.urlParam = function(name){
+$.urlParam = function (name) {
     var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
-    if (results==null){
-       return null;
+    if (results == null) {
+        return null;
     }
-    else{
-       return results[1] || 0;
+    else {
+        return results[1] || 0;
     }
 };
+function stackTrace() {
+    var error = new Error();
+    return error.stack;
+}

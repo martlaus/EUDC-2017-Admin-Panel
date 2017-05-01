@@ -4,82 +4,93 @@ var map,
         lat: 0,
         lng: 0
     };
-
-
-$.ajax({
-    url: API_URL + '/location',
-    dataType: 'json',
-    success: function (data) {
-
-        $.each(data, function (key, value) {
-            var lat = value.lat,
-                lng = value.lng,
-                name = value.name,
-                id = value.id;
-
-            $('.table--locations__body').append('<tr data-id="' + id + '" data-lat="' + lat + '" data-lng="' + lng + '"><td>' + name + '</td><td class="button-padding"><div class="table--locations__button table--locations__button--view">View on map</div></td><td class="button-padding"><div class="table--locations__button table--locations__button--delete"><i class="ion-trash-a ion"></i>Delete</div></td></tr>');
-        });
-
-        $('.table--locations__button--view').on('click', function () {
-            var dataLat = $(this).closest('tr').data('lat'),
-                dataLng = $(this).closest('tr').data('lng');
-
-            var markerLocation = new google.maps.LatLng(parseFloat(dataLat), parseFloat(dataLng));
-
-            clearMarkers();
-            placeMarker(markerLocation);
-            map.setCenter(markerLocation);
-        });
-
-        $('.table--locations__button--delete').on('click', function () {
-            var $location = $(this).closest('tr'),
-                dataId = $(this).closest('tr').data('id');
-
-            $.ajax({
-                url: API_URL + '/location/' + dataId,
-                type: 'DELETE',
-                success: function (data) {
-                    console.log("Tehtud!");
-                    $location.remove();
-                }
-            });
-        });
-    }
+$(function () {
+    makeCall('/location',
+        'GET',
+        {},
+        false,
+        function (data) {
+            locationCatchSuccess(data)
+        },
+        console.log("Failed to fetch locations!" + stackTrace())
+    );
+    makeCall('/roundlocation',
+        'GET',
+        {},
+        false,
+        function (data) {
+            roundLocationCatchSuccess(data)
+        },
+        console.log("Failed to fetch round locations!" + stackTrace())
+    );
 });
 
-$.ajax({
-    url: API_URL + '/roundlocation',
-    dataType: 'json',
-    success: function (data) {
-        var imgurl, name, id;
+function locationCatchSuccess(data) {
+    $.each(data, function (key, value) {
+        var lat = value.lat,
+            lng = value.lng,
+            name = value.name,
+            id = value.id;
 
-        $.each(data, function (key, value) {
-            imgurl = value.imgurl,
-                name = value.name,
-                id = value.id;
+        $('.table--locations__body').append('<tr data-id="' + id + '" data-lat="' + lat + '" data-lng="' + lng + '"><td>' + name + '</td><td class="button-padding"><div class="table--locations__button table--locations__button--view">View on map</div></td><td class="button-padding"><div class="table--locations__button table--locations__button--delete"><i class="ion-trash-a ion"></i>Delete</div></td></tr>');
+    });
 
-            $('.table--rlocations__body').append('<tr data-id="' + id + '" data-name="' + name + '" data-imgurl="' + imgurl + '"><td>' + name + '</td><td class="button-padding"><div class="table--locations__button table--locations__button--view">View image</div></td><td class="button-padding"><div class="table--locations__button table--locations__button--delete"><i class="ion-trash-a ion"></i>Delete</div></td></tr>');
-        });
+    $('.table--locations__button--view').on('click', function () {
+        var dataLat = $(this).closest('tr').data('lat'),
+            dataLng = $(this).closest('tr').data('lng');
 
-        $('.table--locations__button--view').on('click', function () {
-            window.open(imgurl);
-        });
+        var markerLocation = new google.maps.LatLng(parseFloat(dataLat), parseFloat(dataLng));
 
-        $('.table--locations__button--delete').on('click', function () {
-            var $roundLocation = $(this).closest('tr'),
-                dataId = $(this).closest('tr').data('id');
+        clearMarkers();
+        placeMarker(markerLocation);
+        map.setCenter(markerLocation);
+    });
 
-            $.ajax({
-                url: API_URL + '/roundlocation/' + dataId,
-                type: 'DELETE',
-                success: function (data) {
-                    console.log("Tehtud!");
-                    $roundLocation.remove();
-                }
-            });
-        });
-    }
-});
+    $('.table--locations__button--delete').on('click', function () {
+        var $location = $(this).closest('tr'),
+            dataId = $(this).closest('tr').data('id');
+        makeCall('/location/' + dataId,
+            'DELETE',
+            '',
+            false,
+            function (data) {
+                console.log("Location at" + dataId + "is DELETED");
+            },
+            console.log("DELETE at" + dataId),
+            $location.remove());
+    });
+}
+
+function roundLocationCatchSuccess(data) {
+    var imgurl, name, id;
+
+    $.each(data, function (key, value) {
+        imgurl = value.imgurl,
+            name = value.name,
+            id = value.id;
+
+        $('.table--rlocations__body').append('<tr data-id="' + id + '" data-name="' + name + '" data-imgurl="' + imgurl + '"><td>' + name + '</td><td class="button-padding"><div class="table--locations__button table--locations__button--view round">View image</div></td><td class="button-padding"><div class="table--locations__button table--locations__button--delete round"><i class="ion-trash-a ion"></i>Delete</div></td></tr>');
+    });
+
+    $('.table--locations__button--view round').on('click', function () {
+        window.open(imgurl);
+    });
+
+    $('.table--locations__button--delete round').on('click', function () {
+        var $roundLocation = $(this).closest('tr'),
+            dataId = $(this).closest('tr').data('id');
+
+        makeCall('/roundlocation/' + dataId,
+            'DELETE',
+            '',
+            function (data) {
+                console.log("Round location removed!");
+                $roundLocation.remove();
+            },
+            console.log("failed to delete card at" + dataId + "\n adding stacktrace::" + stackTrace())
+        );
+    });
+}
 
 
 function initMap() {
@@ -124,11 +135,11 @@ $('#submit-card').on('click', function (event) {
     event.preventDefault();
 
     if ($('#card-title').val() === "") {
-        $('.create-card-notification').text("Name field can't be empty!");
+        $('#generalLocation').text("Name field can't be empty!");
         $('#card-title').focus();
         return false;
     } else if (markerLocation.lat == 0) {
-        $('.create-card-notification').text("You have to choose a location on the map!");
+        $('#generalLocation').text("You have to choose a location on the map!");
         return false;
     }
 
@@ -144,7 +155,7 @@ $('#submit-card').on('click', function (event) {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data) {
-            $('.create-card-notification').text("Location has been added successfully!");
+            $('#generalLocation').text("Location has been added successfully!");
             $('#add-card').each(function () {
                 this.reset();
             });
@@ -156,7 +167,8 @@ $('#submit-card').on('click', function (event) {
             };
 
             return false;
-        }
+        },
+        end: location.reload()
     })
 
 });
@@ -165,25 +177,21 @@ $('#submit-round-location').on('click', function (event) {
     event.preventDefault();
 
     function isURL(str) {
-        var pattern = new RegExp('^(https?:\\/\\/)?' +
-            '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.?)+[a-z]{2,}|' +
-            '((\\d{1,3}\\.){3}\\d{1,3}))' +
-            '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' +
-            '(\\?[;&a-z\\d%_.~+=-]*)?' +
-            '(\\#[-a-z\\d_]*)?$', 'i');
+        var pattern = new RegExp(/\.(jpe?g|png|gif|bmp|tiff)$/i);
+        console.log(pattern.test(str));
         return pattern.test(str);
     }
 
     if ($('#round-location-title').val() === "") {
-        $('.create-card-notification').text("Name field can't be empty!");
+        $('#roundLocation').text("Name field can't be empty!");
         $('#round-location-title').focus();
         return false;
     } else if ($('#round-location-imgurl').val() === "") {
-        $('.create-card-notification').text("URL field can't be empty!");
+        $('#roundLocation').text("URL field can't be empty!");
         $('#round-location-imgurl').focus();
         return false;
     } else if (!isURL($('#round-location-imgurl').val())) {
-        $('.create-card-notification').text("URL must be correct!");
+        $('#roundLocation').text("URL must be correct!");
         $('#round-location-imgurl').focus();
         return false;
     }
@@ -199,13 +207,14 @@ $('#submit-round-location').on('click', function (event) {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data) {
-            $('.create-card-notification').text("Round Location has been added successfully!");
+            $('#roundLocation').text("Round Location has been added successfully!");
             $('#add-card').each(function () {
                 this.reset();
             });
 
             return false;
-        }
+        },
+        end: location.reload()
     })
 
 });
