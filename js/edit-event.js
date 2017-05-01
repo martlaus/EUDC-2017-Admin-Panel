@@ -1,3 +1,35 @@
+var array = [],
+    dir = "./img/ionicons/512/";
+var glyphArray = [];
+function readToGlyphArray() {
+    $.ajax({
+        url: dir,
+        success: function (data) {
+
+            $(data).find("a:contains('.png')")
+                .each(function () {
+                    var filename = this.href.replace(window.location.host, "").replace("http://", "");
+                    var ioniconName = filename.replace("/", "").replace(".png", "");
+                    $("#event-icon-dropdown").append("<li><a class='dropdown-item ionicon' href='#' id='ion-" + ioniconName + "'>" +
+                        "ion-" + ioniconName +
+                        "        " +
+                        "<img src='" + dir + filename + "'>" +
+                        "</li>" +
+                        "</a>");
+                    array.push("<img src='" + dir + filename + "'></a>");
+
+                });
+            $('.ionicon').click(
+                function () {
+                    console.log(this.id);
+                    $('#event-icon').attr('value', this.id).val(this.id);
+                    $('#event-icon-preview').empty().append("<img src='" + dir + this.id.replace("ion-","") + ".png" + "'>");
+                }
+            );
+        }
+    });
+}
+
 $(document).ready(function () {
     $.ajax({
         type: "GET",
@@ -10,6 +42,7 @@ $(document).ready(function () {
             });
         }
     });
+    readToGlyphArray();
 });
 
 $(function () {
@@ -63,20 +96,24 @@ $(function () {
             postData.id = id;
         }
 
-        makeCall('/event', 'POST', JSON.stringify(postData), true, function (data) {
-            $('.create-event-notification').text("Event editing successful!");
-            console.log(data);
-            if (history.pushState) {
-                var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?id=' + data.id;
-                window.history.pushState({path: newurl}, '', newurl);
+        makeCall('/event',
+            'POST',
+            JSON.stringify(postData),
+            true,
+            function (data) {
+                $('.create-event-notification').text("Event editing successful!");
+                console.log(data);
+                if (history.pushState) {
+                    var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?id=' + data.id;
+                    window.history.pushState({path: newurl}, '', newurl);
 
-                onLoadCallback();
-            }
-
-            return false;
-        }, function () {
-            $('.create-event-notification').html("Some kind of error has revealed itself! Run to the hills!<br>Perhaps your event data simply doesn\'t make any sense?<br>Otherwise pls wait for monkeys in Apaches to be dispatched.");
-        });
+                    onLoadCallback();
+                }
+                return false;
+            },
+            function () {
+                $('.create-event-notification').html("Some kind of error has revealed itself! Run to the hills!<br>Perhaps your event data simply doesn\'t make any sense?<br>Otherwise pls wait for monkeys in Apaches to be dispatched." + stackTrace());
+            });
 
     });
 });
