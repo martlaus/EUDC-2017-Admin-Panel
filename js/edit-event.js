@@ -21,7 +21,6 @@ function readToGlyphArray() {
                 });
             $('.ionicon').click(
                 function () {
-                    console.log(this.id);
                     $('#event-icon').attr('value', this.id).val(this.id);
                     $('#event-icon-preview').empty().append("<img src='" + dir + this.id.replace("ion-","") + ".png" + "'>");
                 }
@@ -102,7 +101,6 @@ $(function () {
             true,
             function (data) {
                 $('.create-event-notification').text("Event editing successful!");
-                console.log(data);
                 if (history.pushState) {
                     var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?id=' + data.id;
                     window.history.pushState({path: newurl}, '', newurl);
