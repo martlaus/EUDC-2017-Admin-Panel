@@ -1,6 +1,5 @@
 var array = [],
     dir = "./img/ionicons/512/";
-var glyphArray = [];
 function readToGlyphArray() {
     $.ajax({
         url: dir,
