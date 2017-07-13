@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list id="48e54518-1eaa-48b9-94e5-45bd9ca37387" name="Default" comment="" />
-    <list default="true" id="658a9645-5547-41b1-b39f-50c33db28a0a" name="Rejected commit: Default" comment="#143799299 Admin wants to add custom detailed map snippets for round locations on admin panel&#10;&#10;Added linkify for future linking business, fixed regex(as much as i was arsed, since the original neither worked or captured the actual data we needed it to, the fact that the link is indeed an image. )&#10;Refactored some of the REST calls to use the common makeCall, added a stacktrace function, added a class to differentiate between a round location and a general location. Haven't yet fixed the map bug with round location.">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/EUDC-2017-Admin-Panel.iml" afterPath="$PROJECT_DIR$/.idea/EUDC-2017-Admin-Panel.iml" />
+    <list default="true" id="658a9645-5547-41b1-b39f-50c33db28a0a" name="Rejected commit: Default" comment="#147939179S Swap colour and icon dropdowns for an event type dropdown">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/main.scss" afterPath="$PROJECT_DIR$/css/main.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/edit-event.html" afterPath="$PROJECT_DIR$/edit-event.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/common.js" afterPath="$PROJECT_DIR$/js/common.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/edit-event.js" afterPath="$PROJECT_DIR$/js/edit-event.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/schedule.js" afterPath="$PROJECT_DIR$/js/schedule.js" />
     </list>
     <ignored path="EUDC-2017-Admin-Panel.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -51,19 +46,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="common.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="common.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/common.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1139">
-              <caret line="67" column="0" lean-forward="true" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="edit-event.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="edit-event.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/edit-event.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="340">
@@ -191,8 +184,8 @@
         <option value="$PROJECT_DIR$/js/schedule.js" />
         <option value="$PROJECT_DIR$/css/main.scss" />
         <option value="$PROJECT_DIR$/edit-event.html" />
-        <option value="$PROJECT_DIR$/js/common.js" />
         <option value="$PROJECT_DIR$/js/edit-event.js" />
+        <option value="$PROJECT_DIR$/js/common.js" />
       </list>
     </option>
   </component>
@@ -712,7 +705,7 @@
       <workItem from="1499711040607" duration="645000" />
       <workItem from="1499712535970" duration="499000" />
       <workItem from="1499713062595" duration="6978000" />
-      <workItem from="1499974684572" duration="3403000" />
+      <workItem from="1499974684572" duration="3603000" />
     </task>
     <task id="LOCAL-00001" summary="#109299062 Admin can see feedback on homepage">
       <created>1480262201334</created>
@@ -784,11 +777,18 @@
       <option name="project" value="LOCAL" />
       <updated>1496575474492</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="#147939179S Swap colour and icon dropdowns for an event type dropdown">
+      <created>1499979896048</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1499979896048</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="82860000" />
+    <option name="totallyTimeSpent" value="83060000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1370" height="744" extended-state="0" />
@@ -897,7 +897,8 @@
     <MESSAGE value="#136055097  Admin wants to see a list of icons that are available for use in schedule&#10;https://www.pivotaltracker.com/story/show/136055097" />
     <MESSAGE value="#143799299 Admin wants to add custom detailed map snippets for round locations on admin panel&#10;&#10;Added linkify for future linking business, fixed regex(as much as i was arsed, since the original neither worked or captured the actual data we needed it to, the fact that the link is indeed an image. )&#10;Refactored some of the REST calls to use the common makeCall, added a stacktrace function, added a class to differentiate between a round location and a general location. Haven't yet fixed the map bug with round location." />
     <MESSAGE value="https://www.pivotaltracker.com/story/show/113481305" />
-    <option name="LAST_COMMIT_MESSAGE" value="https://www.pivotaltracker.com/story/show/113481305" />
+    <MESSAGE value="#147939179S Swap colour and icon dropdowns for an event type dropdown" />
+    <option name="LAST_COMMIT_MESSAGE" value="#147939179S Swap colour and icon dropdowns for an event type dropdown" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -961,9 +962,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1234,16 +1233,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/common.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1139">
-          <caret line="67" column="0" lean-forward="true" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/main.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="389">
@@ -1256,6 +1245,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="92" column="44" lean-forward="false" selection-start-line="92" selection-start-column="44" selection-end-line="92" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/common.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
