@@ -1,5 +1,8 @@
 var array = [],
     dir = "./img/ionicons/512/";
+
+var eventTypes = {};
+
 function readToGlyphArray() {
     $.ajax({
         url: dir,
@@ -28,7 +31,24 @@ function readToGlyphArray() {
     });
 }
 
-$(document).ready(function () {
+function addEventTypesToDropdown() {
+   $.ajax({
+        type: "GET",
+        url: API_URL + '/eventType',
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (obj) {
+
+            $.each(obj, function (key, value) {
+                eventTypes[value.eventType] = value;
+                $("#event-type").append("<option>" + value.eventType + "</option>");
+            });
+        }
+    });
+}
+
+
+function addLocationsToDropdown() {
     $.ajax({
         type: "GET",
         url: API_URL + '/location',
@@ -40,6 +60,12 @@ $(document).ready(function () {
             });
         }
     });
+}
+
+$(document).ready(function () {
+
+    addLocationsToDropdown();
+    addEventTypesToDropdown();
     readToGlyphArray();
 });
 
@@ -65,7 +91,7 @@ $(function () {
         event.preventDefault();
         var $eventEnd = $('#event-end');
         var $eventStart = $('#event-start');
-        var $eventLocation = $('#event-location');
+        var $eventType = eventTypes[$('#event-type option:selected').text()];
 
         if (new Date($eventEnd.val()) - new Date($eventStart.val()) < 0) {
             $('.create-event-notification').text("Event end time can't be before it starts!");
@@ -83,8 +109,7 @@ $(function () {
             'endTime': new Date($eventEnd.val()),
             'title': $('#event-title').val(),
             'description': $('#event-description').val(),
-            'color': $('#event-color').val(),
-            'eventType': $('#event-icon').val(),
+            'eventType': $eventType,
             'location': $('#event-location').val()
         };
 
@@ -129,8 +154,7 @@ function onLoadCallback() {
                     $('#event-description').val(data[id].description);
                     $('#event-location').val(data[id].location);
                     $('#event-start').val(formatDate(new Date(data[id].startTime)));
-                    $('#event-icon').val(data[id].eventType);
-                    $('#event-color').val(data[id].color);
+                    $('#event-type').val(data[id].eventType.name);
                     $('#event-end').val(formatDate(new Date(data[id].endTime)));
                     $('#delete-event').removeClass('hide');
                     break;

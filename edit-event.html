@@ -89,34 +89,20 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="event-icon">Icon</label><br>
-                    <div class="event-icon parent">
-                        <input size="60" type="text" class="event-icon input" id="event-icon"
-                               placeholder="Enter icon from dropdown"/>
-                        <div class="event-icon preview" id="event-icon-preview"></div>
-                    </div>
-                    <div class="dropdown">
-                        <button class="btn btn-default dropdown-toggle" type="button" id="event-icon-dropdown-mom"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Choose an icon<span
-                                class="caret"></span></button>
-                        <ul class="dropdown-menu scrollable-menu" id="event-icon-dropdown" role="menu">
-                        </ul>
-                    </div>
+                    <label for="event-type">Event type</label><br>
+                    <select name="drop_down" id="event-type">
+                    </select>
+                </div>
 
-                    <div class="form-group event-color">
-                        <label for="event-color">Color</label><br>
-                        <input size="60" type="text" class="color" id="event-color" placeholder="Enter event color"/>
+                <div class="form-group events-button-row">
+                    <div type="submit" name="submit-event" id="submit-event"
+                         class="col-xs-3 subject-button subject-add-work file-add-button">
+                        <i class="ion-ios-plus-empty"></i> Save
                     </div>
-
-                    <div class="form-group events-button-row">
-                        <div type="submit" name="submit-event" id="submit-event"
-                             class="col-xs-3 subject-button subject-add-work file-add-button">
-                            <i class="ion-ios-plus-empty"></i> Save
-                        </div>
-                        <div id="delete-event" class="col-xs-3 btn btn-delete">
-                            <i class="ion-close-round"></i> Delete
-                        </div>
+                    <div id="delete-event" class="col-xs-3 btn btn-delete">
+                        <i class="ion-close-round"></i> Delete
                     </div>
+                </div>
             </form>
         </div>
 

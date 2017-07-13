@@ -6,6 +6,7 @@ $(function () {
 
 function addEvent(day, time) {
     window.location.href = '/edit-event.html?time=' + time + '&date=' + day;
+
 }
 
 function listenAddEvent(day, time) {
