@@ -154,7 +154,7 @@ function onLoadCallback() {
                     $('#event-description').val(data[id].description);
                     $('#event-location').val(data[id].location);
                     $('#event-start').val(formatDate(new Date(data[id].startTime)));
-                    $('#event-type').val(data[id].eventType.name);
+                    $('#event-type').val(data[id].eventType.eventType);
                     $('#event-end').val(formatDate(new Date(data[id].endTime)));
                     $('#delete-event').removeClass('hide');
                     break;
