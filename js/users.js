@@ -1,8 +1,9 @@
 $(function () {
-    $.ajax({
-        url: API_URL + '/user',
-        dataType: 'json',
-        success: function (data) {
+    makeCall('/user/',
+        'GET',
+        {},
+        true,
+        function (data) {
             var formattedDate, d, m, y, h, min, date;
             $.each(data, function (key, value) {
                 formattedDate = new Date(value.created);
@@ -28,5 +29,5 @@ $(function () {
                     '</div>');
             });
         }
-    });
+    );
 });

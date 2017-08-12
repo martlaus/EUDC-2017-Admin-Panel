@@ -3,8 +3,8 @@ var API_URL = 'http://188.166.104.203:7070/rest'; //document.location.origin.rep
 
 //var API_URL = 'http://localhost:7070/rest';
 console.log(document.location.origin);
-var TOKEN_COOKIE_NAME = 'eudc-admin-token';
-var EMAIL_COOKIE_NAME = 'user-email';
+var TOKEN_COOKIE_NAME = 'Token';
+var EMAIL_COOKIE_NAME = 'Email';
 
 var userSettings = {
     token: getCookie(TOKEN_COOKIE_NAME) || '',
