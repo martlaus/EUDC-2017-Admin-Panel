@@ -167,8 +167,8 @@ $('#submit-card').on('click', function (event) {
             };
 
             return false;
-        },
-        end: location.reload()
+        }
+        // end: location.reload() // This cancels the request for some reason without waiting for it to end, so we can't have it here.
     })
 
 });
